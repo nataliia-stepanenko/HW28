@@ -59,8 +59,33 @@ const LoginForm = () => {
                 )} 
             />
             <FormGroup sx={{my: '16px'}}>
-                <FormControlLabel control={<Checkbox required/>} label={label} />
-                <FormControlLabel control={<Checkbox />} label="Send me the latest deal alerts" />
+                <Controller
+                control={control}
+                name="Checkbox T&C"
+                rules={{ required: "The field is required" }}
+                render={({ field, fieldState: { error } }) => (
+                    <FormControlLabel 
+                        {...field}
+                        label={label}
+                        control={<Checkbox required/>} 
+                        error={!!error}
+                        helperText={error?.message} 
+                    />
+                )} 
+                />
+                <Controller
+                control={control}
+                name="Subscribe"
+                render={({ field }) => (
+                    <FormControlLabel 
+                        {...field}
+                        label="Send me the latest deal alerts"
+                        control={<Checkbox />} 
+                    />
+                )} 
+                />
+                {/* <FormControlLabel control={<Checkbox required/>} label={label} /> */}
+                {/* <FormControlLabel control={<Checkbox />} label="Send me the latest deal alerts" /> */}
             </FormGroup>
             <Button sx={{width: '100%', fontSize: 18, margin: 0}} variant="contained" type="submit">Sign In</Button>
             </Container>

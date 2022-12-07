@@ -58,7 +58,7 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     margin: 0,
-                    marginBottom: '12px',
+                    marginBottom: '30px',
                     width: '100%',
                     height: 48,
                 },

@@ -30,14 +30,14 @@ const Header = () => {
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description">
-                <Container className='modal' sx={{width:'568px', justifyContent: "flex-start", flexDirection: "column"}}>
-                    <Stack sx={{marginBottom: '12px', padding: 0}} direction="row" alignItems="flex-end" justifyContent="space-between" width="100%">
+                <Container className='modal' sx={{width: '568px'}}>
+                    <Stack sx={{marginBottom: '12px', paddingX: '22px'}} direction="row" alignItems="flex-end" justifyContent="space-between" width="100%">
                         <Typography variant="h3">Sign in</Typography>
                         <IconButton onClick={handleClose} aria-label="close" sx={{marginBottom:"-7px"}}>
                             <CloseIcon />
                         </IconButton>
                     </Stack>
-                    <Typography variant="subtitle1">Tripma is totally free to use. Sign up using your email address or phone number below to get started.</Typography>
+                    <Typography sx={{paddingX: '22px'}} variant="subtitle1">Tripma is totally free to use. Sign up using your email address or phone number below to get started.</Typography>
                     <LoginForm />
                 </Container>
             </Modal>
