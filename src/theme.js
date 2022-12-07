@@ -28,7 +28,7 @@ const theme = createTheme({
         subtitle1: {
             fontSize: '18px',
             color: '#7C8DB0',
-            marginBottom: '36px',
+            marginBottom: '20px',
         },
     },
     palette: {
@@ -51,15 +51,14 @@ const theme = createTheme({
                     display: "flex",
                     justifyContent: "flex-end",
                     marginLeft: 0,
-                    padding: '40px',
                 },
             },
         },
         MuiTextField: {
             styleOverrides: {
                 root: {
-                    margin: 24,
-                    marginLeft: 0,
+                    margin: 0,
+                    marginBottom: '12px',
                     width: '100%',
                     height: 48,
                 },

@@ -3,6 +3,10 @@ import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from '@mui/material/Container';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
 
 const LoginForm = () => {
     const { handleSubmit, control } = useForm();
@@ -11,9 +15,18 @@ const LoginForm = () => {
         console.log(data);
       };
 
+    const label = (
+        <>
+        <span>I agree to the </span>
+        <Link href="#"
+        target="_blank"
+        underline="none">terms and conditions</Link>
+        </>
+    )
+
       return(
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Container sx={{flexDirection: "column"}}>
+            <Container sx={{flexDirection: "column", padding: 0}}>
             <Controller 
                 control={control}
                 fullWidth
@@ -45,7 +58,11 @@ const LoginForm = () => {
                     />
                 )} 
             />
-            <Button sx={{width: '100%'}} variant="contained" type="submit">Login</Button>
+            <FormGroup sx={{my: '16px'}}>
+                <FormControlLabel control={<Checkbox required/>} label={label} />
+                <FormControlLabel control={<Checkbox />} label="Send me the latest deal alerts" />
+            </FormGroup>
+            <Button sx={{width: '100%', fontSize: 18, margin: 0}} variant="contained" type="submit">Sign In</Button>
             </Container>
         </form>
       );
