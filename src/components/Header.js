@@ -31,9 +31,9 @@ const Header = () => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description">
                 <Container className='modal' sx={{width: '568px'}}>
-                    <Stack sx={{marginBottom: '12px', paddingX: '22px'}} direction="row" alignItems="flex-end" justifyContent="space-between" width="100%">
+                    <Stack sx={{marginBottom: '12px', paddingX: '22px'}} direction="row" alignItems="flex-end" justifyContent="space-between" >
                         <Typography variant="h3">Sign in</Typography>
-                        <IconButton onClick={handleClose} aria-label="close" sx={{marginBottom:"-7px"}}>
+                        <IconButton onClick={handleClose} aria-label="close" sx={{marginBottom:"-7px", marginRight:"-10px"}}>
                             <CloseIcon />
                         </IconButton>
                     </Stack>
