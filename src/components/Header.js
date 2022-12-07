@@ -5,20 +5,13 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Button from "@mui/material/Button";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 
-const style = {
-    position: 'absolute',
-    top: '128px',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 568,
-    bgcolor: 'background.paper',
-    borderRadius: '12px',
-    p: 4,
-    boxShadow: '0px 2px 4px rgba(7, 4, 146, 0.1), 0px 24px 60px rgba(6, 47, 125, 0.05), 0px 12px 24px rgba(27, 59, 119, 0.05)',
-  };
+import LoginForm from "./LoginForm";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -37,8 +30,14 @@ const Header = () => {
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description">
-                <Container sx={style}>
-                    <Typography variant="h3">Sign up for Tripma</Typography>
+                <Container className='modal' sx={{width:'568px', justifyContent: "flex-start", flexDirection: "column"}}>
+                    <Stack direction="row" alignItems="flex-end" justifyContent="space-between" width="100%">
+                        <Typography variant="h3">Sign in</Typography>
+                        <IconButton onClick={handleClose} aria-label="close" sx={{marginBottom:"-7px"}}>
+                            <CloseIcon />
+                        </IconButton>
+                    </Stack>
+                    <LoginForm />
                 </Container>
             </Modal>
         </Container>

@@ -51,7 +51,7 @@ const theme = createTheme({
                     display: "flex",
                     justifyContent: "flex-end",
                     marginLeft: 0,
-                    paddingLeft: 96,
+                    padding: '40px',
                 },
             },
         },
@@ -60,7 +60,7 @@ const theme = createTheme({
                 root: {
                     margin: 24,
                     marginLeft: 0,
-                    width: 200,
+                    width: '100%',
                     height: 48,
                 },
             },
