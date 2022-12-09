@@ -47,7 +47,6 @@ const theme = createTheme({
         MuiContainer: {
             styleOverrides: {
                 root: {
-                    // width: 778,
                     display: "flex",
                     justifyContent: "flex-end",
                     marginLeft: 0,

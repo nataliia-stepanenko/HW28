@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 import { ThemeProvider} from '@mui/material/styles';
+import AuthProvider from './contexts/auth/AuthProvider';
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Root from './routes/Root';
@@ -33,7 +35,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>
-    <RouterProvider router={router}/>
+    <AuthProvider>
+      <RouterProvider router={router}/>
+    </AuthProvider>
   </ThemeProvider>
 );
 
