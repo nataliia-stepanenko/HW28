@@ -2,7 +2,6 @@ import { useForm, Controller } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
@@ -25,8 +24,7 @@ const LoginForm = () => {
     )
 
       return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Container sx={{flexDirection: "column", padding: 0}}>
+        <form sx={{flexDirection: "column"}} onSubmit={handleSubmit(onSubmit)}>
             <Controller 
                 control={control}
                 fullWidth
@@ -63,12 +61,14 @@ const LoginForm = () => {
                 control={control}
                 name="Checkbox T&C"
                 rules={{ required: "The field is required" }}
-                render={({ field, fieldState: { error } }) => (
+                render={({ field, fieldState: { errors } }) => (
                     <FormControlLabel 
                         label={label}
-                        error={!!error}
-                        helperText={error?.message} 
-                        control={<Checkbox  {...field} />} />
+                        control={<Checkbox 
+                            {...field}
+                            errors={!!errors}
+                            helperText={errors?.message}  />
+                    } />
                 )}
                 />
                 <Controller
@@ -83,7 +83,6 @@ const LoginForm = () => {
                 />
             </FormGroup>
             <Button sx={{width: '100%', fontSize: 18, margin: 0}} variant="contained" type="submit">Sign In</Button>
-            </Container>
         </form>
       );
 };
