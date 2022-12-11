@@ -1,5 +1,8 @@
 import {NavLink} from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import AuthContext from "../contexts/auth/AuthContext";
+import LoginForm from "./LoginForm";
 
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
@@ -11,12 +14,11 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
-import LoginForm from "./LoginForm";
-
 const Header = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const {userInfo, isLoggedIn, logoutUser} = useContext(AuthContext);
 
     return (
         <Container >
@@ -25,14 +27,16 @@ const Header = () => {
                 <Link><NavLink className={({isActive}) => (isActive? "active" : "")} to="users">Users</NavLink></Link>
                 <Link><NavLink className={({isActive}) => (isActive? "active" : "")} to="hotels">Hotels</NavLink></Link>
             </Box>
-            <Button onClick={handleOpen}>Sign In</Button>
+            {isLoggedIn && <><Button onClick={logoutUser} sx={{marginX: 0}}>Log Out</Button> <img className="user_img" src={userInfo.image} alt={userInfo.firstName + "" + userInfo.lastName}></img></>}
+            {!isLoggedIn && <Button onClick={handleOpen}>Log In</Button>}
+            {!isLoggedIn && 
             <Modal  open={open}
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description">
                 <Box className='modal' sx={{width: '568px'}}>
                     <Stack sx={{marginBottom: '12px', }} direction="row" alignItems="flex-end" justifyContent="space-between" >
-                        <Typography variant="h3">Sign in</Typography>
+                        <Typography variant="h3">Log In</Typography>
                         <IconButton onClick={handleClose} aria-label="close" sx={{marginBottom:"-7px", marginRight:"-10px"}}>
                             <CloseIcon />
                         </IconButton>
@@ -40,7 +44,7 @@ const Header = () => {
                     <Typography sx={{}} variant="subtitle1">Tripma is totally free to use. Sign up using your email address or phone number below to get started.</Typography>
                     <LoginForm />
                 </Box>
-            </Modal>
+            </Modal>}
         </Container>
     )
 };

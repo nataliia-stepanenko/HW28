@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
+
+import AuthContext from "../contexts/auth/AuthContext";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -8,10 +11,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 
 const LoginForm = () => {
-    const { handleSubmit, control } = useForm();
+    const {loginUser} = useContext(AuthContext);
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const { handleSubmit, control } = useForm();
+    const onSubmit = (control) => {
+        console.log(control);
+        loginUser(control);
       };
 
     const label = (
@@ -28,12 +33,12 @@ const LoginForm = () => {
             <Controller 
                 control={control}
                 fullWidth
-                name="User name"
+                name="username"
                 rules={{ required: "The field is required" }}
                 render={({ field, fieldState: { error } }) => (
                     <TextField  
                         {...field} 
-                        label="User name" 
+                        label="User name"
                         variant="outlined" 
                         error={!!error}
                         helperText={error?.message}
@@ -43,7 +48,7 @@ const LoginForm = () => {
             <Controller 
                 control={control}
                 fullWidth
-                name="Password"
+                name="password"
                 rules={{ required: "The field is required" }}
                 render={({ field, fieldState: { error } }) => (
                     <TextField  
@@ -59,21 +64,24 @@ const LoginForm = () => {
             <FormGroup sx={{my: '16px'}}>
                 <Controller
                 control={control}
-                name="Checkbox T&C"
+                name="consent"
+                defaultValue={true}
                 rules={{ required: "The field is required" }}
-                render={({ field, fieldState: { errors } }) => (
+                render={({ field, fieldState: { error } }) => (
                     <FormControlLabel 
                         label={label}
                         control={<Checkbox 
                             {...field}
-                            errors={!!errors}
-                            helperText={errors?.message}  />
+                            defaultChecked
+                            error={!!error}
+                            helperText={error?.message}  />
                     } />
                 )}
                 />
                 <Controller
                 control={control}
-                name="Subscribe"
+                name="subscribe"
+                defaultValue={false}
                 render={({ field }) => (
                     <FormControlLabel 
                         label="Send me the latest deal alerts"
