@@ -29,7 +29,6 @@ const Header = () => {
             </Box>
             {isLoggedIn && <><Button onClick={logoutUser} sx={{marginX: 0}}>Log Out</Button> <img className="user_img" src={userInfo.image} alt={userInfo.firstName + "" + userInfo.lastName}></img></>}
             {!isLoggedIn && <Button onClick={handleOpen}>Log In</Button>}
-            {!isLoggedIn && 
             <Modal  open={open}
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
@@ -44,7 +43,7 @@ const Header = () => {
                     <Typography sx={{}} variant="subtitle1">Tripma is totally free to use. Sign up using your email address or phone number below to get started.</Typography>
                     <LoginForm />
                 </Box>
-            </Modal>}
+            </Modal>
         </Container>
     )
 };
